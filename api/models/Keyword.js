@@ -20,8 +20,7 @@ attributes: {
 	},
 	str:{
 		type:'string',
-		required:true,
-		primaryKey:true
+		required:true
 	},
 	user:{
 		model:'user'

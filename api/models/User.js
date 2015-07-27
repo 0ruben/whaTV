@@ -25,6 +25,9 @@ module.exports = {
   	},
   	facebook_id:{
   		type:'integer'
+  	},
+  	is_ios:{
+  		type:'boolean'
   	}
 
   }

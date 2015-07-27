@@ -17,7 +17,10 @@ module.exports = {
   		type:'string',
   		required:true
   	},
-  	
+  	is_standard:{
+  		type:'boolean'
+  	}
+
   }
 };
 

@@ -10,7 +10,7 @@
 
  	bindKeyword: function(req, res){
  		var keywordID;
- 		Keyword.findOne({str:req.param('keyword'), is_standard:}).exec(function(err, keyword){
+ 		Keyword.findOne({str:req.param('keyword'), is_standard:false}).exec(function(err, keyword){
  			if(!keyword){
  				Keyword.create({keyword:req.param('keyword')}).exec(function(err, keyword){
  					keywordID = keyword.id;

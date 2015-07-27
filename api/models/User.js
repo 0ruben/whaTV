@@ -16,7 +16,8 @@ module.exports = {
   	},
   	username:{
   		type:'string',
-  		required:true
+  		required:true,
+  		unique: true
   	},
   	password:{
   		type:'password',
@@ -28,6 +29,9 @@ module.exports = {
   	},
   	is_ios:{
   		type:'boolean'
+  	},
+  	push_id:{
+  		type:'string'
   	}
 
   }

@@ -10,7 +10,7 @@
  	facebookConnect: function(req,res){
  		if(req.param('facebook_id')){
  			User.findOne({facebook_id:req.param('facebook_id')},function(err,user){
- 				if(err) return res.status(404).end();
+ 				if(err) return res.status(400).end();
  				if(!user)
  				{
  					if(!req.param('email')){
@@ -18,7 +18,7 @@
  					}
  					else
  						var email = req.param('email');
-          User.create({email:email,facebook_id:req.param('facebook_id')}, function userCreated(err, user){   // CREATE ACCOUNT
+          User.create({email:email,facebook_id:req.param('facebook_id')username:req.param('username')}, function userCreated(err, user){   // CREATE ACCOUNT
           	if(err){ console.log(err); return res.status(400).end();}    
           	res.status(200).json(user);
           });

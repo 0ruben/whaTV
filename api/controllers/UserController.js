@@ -27,15 +27,21 @@
  	},
 
  	create:function(req, res){
- 		User.create(req.params.all()).exec(function(err,user){
- 			if(err){
- 				console.log(err);
- 				return res.status(400).end();
- 			}
- 			
- 				return res.status(200).json(user);
+ 		User.findOne({req.param('username'), facebook_id:null}).exec(function(err,user){
+ 			if(user)
+ 				return res.status(400).send("Pseudo déjà utilisé");
+ 			else{
 
- 		});
+ 				User.create(req.params.all()).exec(function(err,user){
+ 					if(err){
+ 						console.log(err);
+ 						return res.status(400).end();
+ 					}	
+ 					return res.status(200).json(user);
+
+ 				});
+ 			}
+ 		})
  	},
 
  	login:function(req, res){

@@ -2,9 +2,11 @@
  * Created by jaumard on 27/02/2015.
  */
 module.exports.schedule = {
-  /*Every monday at 1am
-   "0 1 * * 1"   : function ()
+	//Every day at 6PM
+   "0 18 * * *"   : function ()
    {
-        console.log("cron ok");
-   }*/
+        Keyword.query("select * from keyword group by keyword").exec(function(err, keywords){
+        	
+        })
+   }
 };

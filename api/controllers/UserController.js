@@ -9,7 +9,7 @@
 
  	facebookConnect: function(req,res){
  		if(req.param('facebook_id')){
- 			User.findOne({facebook_id:req.param('facebook_id')},function(err,user){
+ 			User.findOne({facebook_id:req.param('facebook_id')}).exec(function(err,user){
  				if(err) return res.status(400).end();
  				if(!user)
  				{

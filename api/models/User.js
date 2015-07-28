@@ -20,11 +20,12 @@ module.exports = {
   		unique: true
   	},
   	password:{
-  		type:'password',
+  		type:'string',
   		// minLength:6
   	},
   	facebook_id:{
-  		type:'integer'
+  		type:'integer',
+  		unique:true
   	},
   	is_ios:{
   		type:'boolean'

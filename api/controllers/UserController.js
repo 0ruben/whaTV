@@ -9,7 +9,7 @@
 
  	facebookConnect: function(req,res){
  		if(req.param('facebook_id')){
- 			User.findOne({facebook_id:req.param('facebook_id')},function(err,user){
+ 			User.findOne({facebook_id:req.param('facebook_id')}).exec(function(err,user){
  				if(err) return res.status(400).end();
  				if(!user)
  				{
@@ -27,15 +27,21 @@
  	},
 
  	create:function(req, res){
- 		User.create(req.params.all()).exec(function(err,user){
- 			if(err){
- 				console.log(err);
- 				return res.status(400).end();
- 			}
- 			
- 				return res.status(200).json(user);
+ 		User.findOne({req.param('username'), facebook_id:null}).exec(function(err,user){
+ 			if(user)
+ 				return res.status(400).send("Pseudo déjà utilisé");
+ 			else{
 
- 		});
+ 				User.create(req.params.all()).exec(function(err,user){
+ 					if(err){
+ 						console.log(err);
+ 						return res.status(400).end();
+ 					}	
+ 					return res.status(200).json(user);
+
+ 				});
+ 			}
+ 		})
  	},
 
  	login:function(req, res){

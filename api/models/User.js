@@ -21,7 +21,7 @@ module.exports = {
   	},
   	password:{
   		type:'password',
-  		minLength:6
+  		// minLength:6
   	},
   	facebook_id:{
   		type:'integer'

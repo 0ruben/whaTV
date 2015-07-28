@@ -21,7 +21,6 @@ module.exports = {
   	},
   	password:{
   		type:'password',
-  		required:true,
   		minLength:6
   	},
   	facebook_id:{

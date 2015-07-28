@@ -12,7 +12,7 @@ module.exports = {
 	test : function (req, res) {
 
 		TraitementService.test('27', function(data){
-			console.log(data);
+			// console.log(data);
 		
 			res.status(200).end();
 		})

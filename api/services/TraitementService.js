@@ -1,5 +1,6 @@
 			var cheerio = require('cheerio');
 			var request = require('request');
+			var iconv = require('iconv-lite');
 
 
 			// var urls = [];
@@ -26,7 +27,10 @@
 
 					var dayData=[];
 					var urls =[];
-					request('http://www.programme-tv.com/mon-programme-television.html', function (error, response, html) {
+					request({encoding: null,url:'http://www.programme-tv.com/mon-programme-television.html'}, function (error, response, html) {
+						html = new Buffer(html);
+						html = iconv.decode(html,'iso-8859-1');
+						console.log(html);
 						if (!error && response.statusCode == 200) {
 							var $ = cheerio.load(html); // $ est la page où il y a tous les programmes de l'horaire donné
 
@@ -40,7 +44,7 @@
 								//	console.log(urls);
 
 								}
-							
+						callbackGeneral();
 
 
 				

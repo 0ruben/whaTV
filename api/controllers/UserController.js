@@ -32,6 +32,8 @@
  				console.log(err);
  				return res.status(400).end();
  			}
+ 			
+ 				return res.status(200).json(user);
 
  		});
  	},

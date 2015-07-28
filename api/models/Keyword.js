@@ -7,20 +7,28 @@
 
 module.exports = {
 
-  attributes: {
-  	id:{
-  		type:'integer',
-  		autoIncrement:true,
-  		primaryKey: true
-  	},
-  	str:{
-  		type:'string',
-  		required:true
-  	},
-  	is_standard:{
-  		type:'boolean'
-  	}
+	beforeCreate: function (attrs, next) {
+		attrs.cleanname = ToolsService.clean(attrs.str);
+		next();
+	},
 
-  }
+attributes: {
+	id:{
+		type:'integer',
+		autoIncrement:true,
+		primaryKey: true
+	},
+	str:{
+		type:'string',
+		required:true
+	},
+	user:{
+		model:'user'
+	},
+	cleanname:{
+		type:'string'
+	}
+
+}
 };
 

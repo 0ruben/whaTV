@@ -16,15 +16,16 @@ module.exports = {
   	},
   	username:{
   		type:'string',
-  		required:true
+  		required:true,
+  		unique: true
   	},
   	password:{
-  		type:'password',
-  		required:true,
-  		minLength:6
+  		type:'string',
+  		// minLength:6
   	},
   	facebook_id:{
-  		type:'integer'
+  		type:'integer',
+  		unique:true
   	},
   	is_ios:{
   		type:'boolean'

@@ -28,8 +28,13 @@ module.exports = {
   	},
   	is_ios:{
   		type:'boolean'
-  	}
-
+  	},
+    push_id:{
+      type:'string'
+    },
+    pending_notif: {
+      type: 'integer'
+    }
   }
 };
 

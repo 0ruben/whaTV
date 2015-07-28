@@ -3,10 +3,11 @@
  */
 module.exports.schedule = {
 	//Every day at 6PM
-   "0 18 * * *"   : function ()
+   "0 * * * *"   : function ()
    {
-        Keyword.query("select * from keyword group by keyword").exec(function(err, keywords){
-        	
-        })
+   	var heure = new Date().getHours()+1;
+	var jour = moment().add(5, 'days').format('DDMMYY');
+	var heure = jour.format('HH')+1;
+	ScrapperService.getProgrammes(heure, jour);
    }
 };

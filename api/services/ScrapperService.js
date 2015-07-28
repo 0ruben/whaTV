@@ -1,32 +1,14 @@
 			var cheerio = require('cheerio');
 			var request = require('request');
-
-
-			// var urls = [];
-			// 		villes.forEach(function(ville, index){
-			// 			villes[index]=villes[index].substring(0,villes[index].length-6);
-			// 			console.log(villes[index]);
-			// 		});
-			// 		var myObject = [];
-			// 		async.each(villes, function(ville, callback){
-			// 			request(ville, function (error, response, body) {
-			// 				console.log(error);
-			// 				if (!error && response.statusCode == 200) {
-			// 					$ = cheerio.load(body.toString());
-			// 					urls.push(_.pluck(_.pluck($('ul.list-e').find('li a'),'attribs'),'href'));
-
-			// 				}
-			// 				callback();
-			// 			});
-
+			var moment = require('moment');
 
 			module.exports={
 
-				test:function(date,callbackGeneral){
+				getProgrammes:function(date,heure,callbackGeneral){
 
 					var dayData=[];
 					var urls =[];
-					request('http://www.programme-tv.com/mon-programme-television.html', function (error, response, html) {
+					request('http://programme-tv.com/'+date+'/tnt/'+heure+'/mon-programme-television.html', function (error, response, html) {
 						if (!error && response.statusCode == 200) {
 							var $ = cheerio.load(html); // $ est la page où il y a tous les programmes de l'horaire donné
 
@@ -36,9 +18,6 @@
 									for (var i = urls.length - 1; i >= 0; i--) {
 										urls[i] = 'http://www.programme-tv.com/mon-programme-television.html' + urls[i];
 									}
-
-								//	console.log(urls);
-
 								}
 							
 

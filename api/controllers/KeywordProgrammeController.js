@@ -9,7 +9,7 @@
 
  	addKeyword:function(req,res){
  		var kw = ToolsService.clean(req.param("kw"));
- 		Keyword.findOne({keyword:kw}).exec(function(err, keyword){
+ 		Keyword.findOne({cleanname:kw}).exec(function(err, keyword){
  			if(err){
  				console.log(err);
  				return res.status(400).end();
@@ -26,6 +26,6 @@
  		})
 
  	}
- }
+ 
 };
 

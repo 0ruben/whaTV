@@ -27,7 +27,7 @@
  	},
 
  	create:function(req, res){
- 		User.findOne({req.param('username'), facebook_id:null}).exec(function(err,user){
+ 		User.findOne({username: req.param('username'), facebook_id:null}).exec(function(err,user){
  			if(user)
  				return res.status(400).send("Pseudo déjà utilisé");
  			else{

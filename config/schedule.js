@@ -5,9 +5,11 @@ module.exports.schedule = {
 	//Every day at 6PM
    "0 * * * *"   : function ()
    {
-   	var heure = new Date().getHours()+1;
+   
 	var jour = moment().add(5, 'days').format('DDMMYY');
 	var heure = jour.format('HH')+1;
-	ScrapperService.getProgrammes(heure, jour);
+	ScrapperService.getProgrammes(heure, jour, function(programmes){
+
+	});
    }
 };

@@ -12,10 +12,10 @@ module.exports = {
   		type:'string'
   	},
   	heure:{
-  		type:'datetime'
+  		type:'string'
   	},
   	duree:{
-  		type:'time'
+  		type:'string'
   	},
   	titre:{
   		type:'string'
@@ -24,7 +24,8 @@ module.exports = {
   		type:'string'
   	},
   	description:{
-  		type:'string'
+  		type:'string',
+      size: 2000
   	},
   	casting:{
   		type:'string'

@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
 
   	keyword:{
-  		model:'keyword'
+  		type:'string'
   	},
   	programme:{
   		model:'programme'

@@ -49,9 +49,9 @@ module.exports = {
     },
 
     search: function(req, res){
-    	Keyword.find({
+    	Keyword.find().where({
     		cleanname : {'contains':  ToolsService.clean(req.param('keyword')), '!': _.pluck(req.param('keywords'),'cleanname')}
-    	}, function(err, keywords){
+    	}).limit(30).exec(function(err, keywords){
 
     		if(err){
     			console.log(err);

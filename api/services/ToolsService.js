@@ -15,5 +15,12 @@ module.exports = {
         r = r.replace(new RegExp(/[ýÿ]/g), "y");
         return r;
 
-    },
+  },
+
+  cleanHtml: function(s) {
+    var r = s.replace(/<(?:.|\n)*?>/gm, '');
+    r = r.replace(/\\/g, '');
+    r = r.replace(/\\n/g, '');
+    return r;
+  }
 };

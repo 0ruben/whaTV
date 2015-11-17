@@ -52,19 +52,24 @@ module.exports = {
         })
     },
 
-    login: function(req, res) {
-        User.findOne({
-            username: req.param('username'),
-            password: req.param('password')
-        }).exec(function(err, user) {
-            if (err) {
-                console.log(err);
-                return res.status(400).end();
-            }
-            if (!user)
-                return res.status(406).end();
-            else
-                return res.status(200).json(user);
-        })
-    }
+ login:function(req, res){
+   User.findOne({username:req.param('username'),password:req.param('password')}).exec(function(err,user){
+    if(err){
+     console.log(err);
+     return res.status(400).end();
+   }
+   if(!user)
+     return res.status(406).end();
+   else
+     return res.status(200).json(user);
+ })
+ },
+
+ getKeywords: function(req,res){
+  Keyword.find({user: req.param('id')},function(err,keywords){
+    if(err) return res.status(400).end();
+    res.status(200).json(keywords);
+  });
+ }
+
 };

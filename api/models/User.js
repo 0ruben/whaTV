@@ -24,7 +24,7 @@ module.exports = {
   		// minLength:6
   	},
   	facebook_id:{
-  		type:'integer',
+  		type:'string',
   		unique:true
   	},
   	is_ios:{

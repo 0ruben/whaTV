@@ -6,6 +6,21 @@
  */
 
 module.exports = {
+
+
+	addKeyword:function(req,res){
+ 		var kw = ToolsService.clean(req.param("kw"));
+ 		Keyword.create({user: req.param('user'), str:req.param('kw')}).exec(function(err, keyword){
+ 			Programme.query("select id from programme where titre like '%"+kw+"%' or soustitre like '%"+kw+"%' or description like '%"+kw+"%'",function(err, programmes){
+ 				
+ 				if(err)
+ 					return res.status(400).end();
+
+ 				res.status(200).json(programmes);
+ 			});
+ 		});
+
+ 	},
 	
 	getKeywords:function(req, res){
 		var keywords = _.map(req.param('keywords'), function(keyword){
@@ -32,5 +47,20 @@ module.exports = {
     //     });
 
     },
+
+    search: function(req, res){
+    	Keyword.find({
+    		cleanname : {'contains':  ToolsService.clean(req.param('keyword')), '!': _.pluck(req.param('keywords'),'cleanname')}
+    	}, function(err, keywords){
+
+    		if(err){
+    			console.log(err);
+    			return res.status(400).end();
+    		}
+
+    		else
+    			res.status(200).json(keywords);
+    	});
+    }
 
 };

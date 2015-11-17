@@ -9,7 +9,7 @@
 
 module.exports = {
 
-	test : function (req, res) {
+	getData : function (req, res) {
 		var moment = require('moment');
 	var jour = moment().add(1, 'days').format('DDMMYYYY');
 	var heure = moment().add(1, 'days').add(1, 'hours').format('HH');

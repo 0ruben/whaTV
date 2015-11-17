@@ -55,6 +55,13 @@
    else
      return res.status(200).json(user);
  })
+ },
+
+ getKeywords: function(req,res){
+  Keyword.find({user: req.param('id')},function(err,keywords){
+    if(err) return res.status(400).end();
+    res.status(200).json(keywords);
+  });
  }
 };
 

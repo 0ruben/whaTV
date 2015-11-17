@@ -11,11 +11,12 @@ module.exports = {
 
 	test : function (req, res) {
 		var moment = require('moment');
-	var jour = moment().add(5, 'days').format('DDMMYYYY');
-	var heure = moment().add(5, 'days').add(1, 'hours').format('HH');
+	var jour = moment().add(1, 'days').format('DDMMYYYY');
+	var heure = moment().add(1, 'days').add(1, 'hours').format('HH');
 		ScrapperService.getProgrammes(jour,heure, function(data){
-			// console.log(data);
-		
+			 _.each(data, function(elem){
+			 	console.log(elem.description);
+			});
 			res.status(200).end();
 		})
 

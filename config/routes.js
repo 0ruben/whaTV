@@ -35,9 +35,6 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /getKeywords/?user=:user&keyword=:keyword&limit=:limit' : 'KeywordController.getKeywords',
-
-  '/getKeywords': 'KeywordController.getKeywords'
 
 
   /***************************************************************************

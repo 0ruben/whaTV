@@ -66,7 +66,7 @@ module.exports = {
  },
 
  getKeywords: function(req,res){
-  Keyword.find({user: req.param('id')},function(err,keywords){
+  Keyword.find({user: req.param('user')},function(err,keywords){
     if(err) return res.status(400).end();
     res.status(200).json(keywords);
   });
